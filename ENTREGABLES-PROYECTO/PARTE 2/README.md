@@ -5,7 +5,7 @@
 
 El propósito de este proyecto es construir un pipeline ETL reproducible que integre y transforme datos del examen ICFES 2024 junto con fuentes externas obtenidas mediante Web Scraping, con el fin de analizar si el contexto socioeconómico influye en el desempeño académico de los estudiantes.
 
-Para lograrlo, se implementó un proceso automatizado que:
+Para lograrlo, se implementó un proceso que:
 
 Extrae los datos desde múltiples fuentes (CSV + Web Scraping).
 
