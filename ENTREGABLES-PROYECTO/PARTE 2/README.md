@@ -1,5 +1,5 @@
 # README – ETL Project: ICFES 2024 Data Warehouse
-
+<br><br>
 
 ### **Objetivo del Proyecto**
 
@@ -14,7 +14,7 @@ Limpia, valida y consolida la información mediante Great Expectations.
 Carga los resultados en un Data Warehouse modelado en esquema estrella.
 
 Permite ejecutar consultas y visualizaciones directamente desde la base de datos.
-
+<br><br>
 
 
 
@@ -35,7 +35,7 @@ link fuente principal final drive "data_icfes_2024_final.csv"
 
 
 https://drive.google.com/drive/folders/1y1--OmcA7TKS-Ugct5aikFMzOTa8Mp1h?usp=sharing
-
+<br>
 
 
 
@@ -48,7 +48,7 @@ municipios_colombia.html → Población por municipoos.
 wikipedia_departamentos_idh.html → Índice de desarrollo humano (IDH) por departamento.
 
 Estas fuentes enriquecen el dataset original, permitiendo un análisis contextual más completo sobre la relación entre desempeño académico y condiciones socioeconómicas.
-
+<br><br>
 
 
 
@@ -63,7 +63,7 @@ Estas fuentes enriquecen el dataset original, permitiendo un análisis contextua
 uv python install 3.11
 uv venv -p 3.11 .venv
 source .venv/bin/activate   # Windows: .\.venv\Scripts\Activate.ps1
-
+<br><br>
 
 
 
@@ -96,8 +96,7 @@ Usuario: etl25
 Contraseña: etl25
 
 ¿Salvar contraseña?: Sí
-
-
+<br><br>
 
 ### **Autores**
 
