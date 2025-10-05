@@ -24,6 +24,21 @@ Permite ejecutar consultas y visualizaciones directamente desde la base de datos
 
 data_icfes_2024.csv: base original del ICFES 2024 (10k+ registros).
 
+link fuente principal drive  "data_icfes_2024.csv"
+(PARTE 2/data/raw)
+
+https://drive.google.com/drive/folders/1y1--OmcA7TKS-Ugct5aikFMzOTa8Mp1h?usp=sharing
+
+
+link fuente principal final drive "data_icfes_2024_final.csv"
+(PARTE 2/data/curated)
+
+
+https://drive.google.com/drive/folders/1y1--OmcA7TKS-Ugct5aikFMzOTa8Mp1h?usp=sharing
+
+
+
+
 **Fuentes complementarias (Web Scraping):**
 
 dane_pobreza_monetaria.html → Indicadores de pobreza monetaria por departamento.
@@ -33,6 +48,9 @@ municipios_colombia.html → Población por municipoos.
 wikipedia_departamentos_idh.html → Índice de desarrollo humano (IDH) por departamento.
 
 Estas fuentes enriquecen el dataset original, permitiendo un análisis contextual más completo sobre la relación entre desempeño académico y condiciones socioeconómicas.
+
+
+
 
 
 
