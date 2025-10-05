@@ -1,7 +1,5 @@
-# Integrantes del grupo1
+# Integrantes del GRUPO-ETL-1
 
-- **Bryan Burbano**  
-- **Franco Ortiz**  
-- **Didieth Baron**  
-- **Jhonny Hurtado**
+Entrega de proyectos y workshop etl
 
+Integrants: Jhonny Hurtado - Bryan Burbano
