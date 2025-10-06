@@ -1,15 +1,37 @@
+
+
 version: "3.9"
 services:
-  postgres:
+
+  # DB TRANSFORMED (PostgreSQL)-----------------------------------------------------------------
+  postgres-dw:
     image: postgres:15
-    container_name: dw_postgres
+    container_name: workshop2-dw_postgres
+    restart: unless-stopped
+    ports: ["5432:5432"]
     environment:
       POSTGRES_USER: etluser
       POSTGRES_PASSWORD: etlpass
       POSTGRES_DB: dw
-    ports:
-      - "5432:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U etluser -d dw"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PGAdmin para gestionar la base de datos------------------------------------------------------
+  pgadmin:
+    image: dpage/pgadmin4:8
+    container_name: workshop2-pgadmin
+    restart: unless-stopped
+    ports: ["8080:80"]   # UI Postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on: [postgres-dw]
+
 volumes:
   pg_data:
+
