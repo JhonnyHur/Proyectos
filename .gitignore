@@ -1,3 +1,10 @@
 ENTREGABLES-PROYECTO/PARTE 2/data/curated/df_icfes_2024_final.csv
 ENTREGABLES-PROYECTO/PARTE 2/data/raw/data_icfes_2024.csv
 
+# Ignorar entornos virtuales y archivos temporales
+WORKSHOPS/WORKSHOP-2/.venv/
+WORKSHOPS/WORKSHOP-2/my_python_env/
+**/.venv/
+**/my_python_env/
+__pycache__/
+*.pyc
