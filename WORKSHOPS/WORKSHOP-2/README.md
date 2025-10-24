@@ -2,7 +2,7 @@
 
 url interfaz grafica: http://localhost:8080
 
-Cuando abras pgAdmin te pedirá login:
+Login:
 Correo: admin@admin.com
 Contraseña: admin
 
@@ -24,10 +24,10 @@ Marca la opción ¿Salvar contraseña? para no tener que escribirla siempre.
 
 
 
-# README – ETL Workshop: ICFES 2024 Data Warehouse
+# README – ETL Workshop2
 <br><br>
 
-### **Objetivo del Workshop**
+### **Objetivo del Workshop2**
 
 El propósito de este workshop es construir un pipeline ETL reproducible que integre y transforme datos de una compañia de venta de autos usados junto con fuentes externas obtenidas mediante Web Scraping, con el fin de analizar de que pais es la marca del vehiculo y cual es su precio en venta de fabrica de los vehiculos.
 
@@ -105,7 +105,7 @@ Puerto: 5432
 Base de datos de mantenimiento: dw
 Nombre de usuario: etluser
 Contraseña: etlpass
-Marca la opción ¿Salvar contraseña? para no tener que escribirla siempre.
+Marca la opción: Salvar contraseña
 <br><br>
 
 ### **Autores**
