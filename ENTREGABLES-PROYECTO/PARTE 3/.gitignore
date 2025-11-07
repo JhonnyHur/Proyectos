@@ -1,0 +1,53 @@
+# ── Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Entornos
+.venv/
+venv/
+ENV/
+env/
+#.env
+#.env.*
+
+# ── Airflow / Logs
+logs/
+airflow_logs/
+*.pid
+
+# ── Datos (mantén los .gitkeep)
+data/input/**
+!data/input/.gitkeep
+data/output/**
+!data/output/.gitkeep
+data/staging/**
+!data/staging/.gitkeep
+
+# ── IDE/OS
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# ── Docker/Volúmenes
+pgdata/
+volumes/
+*.log
+
+# ── Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+
+
+# Archivos generados por setuptools / uv
+*.egg-info/
+uv.lock
