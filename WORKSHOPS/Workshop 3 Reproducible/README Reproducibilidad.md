@@ -1,30 +1,50 @@
-1) Requisitos
-Docker y Docker Compose instalados
-Puertos libres: 8080 (Airflow), 5432 (Postgrest)
+## 1. Requisitos
 
-2) .env 
-Crea un archivo .env en la raiz con:
-FERNET_KEY="Llave generada"
+- **Docker** y **Docker Compose** instalados en tu máquina.
+- Puertos disponibles:
+  - **8080** para Airflow Webserver
+  - **5432** para PostgreSQL
+
+---
+
+## 2. Crear archivo `.env`
+
+En la raíz del proyecto, crea un archivo llamado `.env` con el siguiente contenido:
+
+```env
+FERNET_KEY=<TU_LLAVE_GENERADA>
 AIRFLOW__CORE__LOAD_EXAMPLES=False
 AIRFLOW__CORE__EXECUTOR=LocalExecutor
 AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
 _PIP_ADDITIONAL_REQUIREMENTS=pandas numpy matplotlib seaborn pyarrow fastparquet
+```
 
-luego usa los siguientes comandos en la terminal:
-python
+### Generar la clave `FERNET_KEY`
+
+Ejecuta en tu terminal:
+
+```bash
+python - << 'PY'
 from cryptography.fernet import Fernet
 print(Fernet.generate_key().decode())
 PY
+```
 
+Esto generará algo como:
 
-Esto te generara algo parecido a esto: LXLNdvx0aVk63E8_c2igw9DkH4Tf6xg4bXWClb2ezjI=
+```
+LXLNdvx0aVk63E8_c2igw9DkH4Tf6xg4bXWClb2ezjI=
+```
 
-Y lo copias en el espacio del archivo .env que dice FERNET_KEY= " "
-Nota: sin las comillas
+Copia ese valor en `FERNET_KEY=` sin comillas.
 
-3) docker-compose.yml
-crea un archivo docker-compose con las siguiente configuracion:
+---
 
+## 3. Archivo `docker-compose.yml`
+
+Asegúrate de tener este archivo en la raíz del proyecto:
+
+```yaml
 version: "3.9"
 
 services:
@@ -66,23 +86,38 @@ services:
 
 volumes:
   pgdata:
+```
 
-4) Levantar los servicios
-usa el comando en la terminal:
+---
 
+## 4. Levantar los servicios
+
+Ejecuta:
+
+```bash
 docker compose up -d
+```
 
+Luego abre Airflow en tu navegador:
 
-Abre Airflow: http://localhost:8080
-Usuario: admin · Contraseña: admin
+```
+http://localhost:8080
+```
 
-En la UI:
+**Credenciales:**
+- Usuario: `admin`
+- Contraseña: `admin`
 
-Activa el DAG workshop_etl.
-Haz Trigger DAG
+### En la UI:
 
-5) Resultados esperados:
+1. Activa el DAG **`workshop_etl`**
+2. Haz clic en **Trigger DAG**
 
+---
+
+## 5. Resultados esperados
+
+```
 data/output/
 ├─ fact_transactions.csv
 ├─ agg_daily.csv
@@ -102,3 +137,6 @@ data/output/
    ├─ evolucion_total_usd_diario.png
    ├─ picos_caidas_semana.png
    └─ summary.json
+```
+
+---

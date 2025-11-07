@@ -5,27 +5,27 @@ import sys
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-# ------------------------------------------------------------
+
 # Rutas y módulos ETL
-# ------------------------------------------------------------
+
 sys.path.append("/opt/airflow/etl")
 from extract import read_all
 from transform import transform
 from load import save_csv, save_sqlite
 from eda_output import run_eda  # 👈 tu nuevo EDA modular
 
-# ------------------------------------------------------------
+
 # Directorios base
-# ------------------------------------------------------------
+
 DATA = Path("/opt/airflow/data")
 STAGE = DATA / "stage"
 OUT = DATA / "output"
 STAGE.mkdir(parents=True, exist_ok=True)
 OUT.mkdir(parents=True, exist_ok=True)
 
-# ------------------------------------------------------------
+
 # Configuración DAG
-# ------------------------------------------------------------
+
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
@@ -44,9 +44,6 @@ with DAG(
     tags=["workshop", "etl", "eda"],
 ) as dag:
 
-    # --------------------------------------------------------
-    # 1️⃣ EXTRACT
-    # --------------------------------------------------------
     def _extract(**context):
         tx, cu, pr, fx, cr = read_all()
         tx.to_parquet(STAGE / "tx.parquet", index=False)
@@ -56,9 +53,6 @@ with DAG(
         cr.to_parquet(STAGE / "cr.parquet", index=False)
         print("[EXTRACT] Datos guardados en /data/stage")
 
-    # --------------------------------------------------------
-    # 2️⃣ TRANSFORM
-    # --------------------------------------------------------
     def _transform(**context):
         import pandas as pd
         tx = pd.read_parquet(STAGE / "tx.parquet")
@@ -72,9 +66,6 @@ with DAG(
         daily.to_parquet(STAGE / "daily.parquet", index=False)
         print("[TRANSFORM] fact.parquet y daily.parquet listos")
 
-    # --------------------------------------------------------
-    # 3️⃣ LOAD
-    # --------------------------------------------------------
     def _load(**context):
         import pandas as pd
         fact = pd.read_parquet(STAGE / "fact.parquet")
@@ -83,16 +74,12 @@ with DAG(
         save_sqlite(fact, daily)
         print("[LOAD] Archivos guardados en /data/output")
 
-    # --------------------------------------------------------
-    # 4️⃣ EDA (nuevo módulo)
-    # --------------------------------------------------------
     def _eda_output(**context):
         run_eda(OUT)  # 👈 llama directamente a tu eda_output.py
         print("[EDA] Análisis Exploratorio completado.")
 
-    # --------------------------------------------------------
     # Definición de tareas y dependencias
-    # --------------------------------------------------------
+
     t_extract = PythonOperator(task_id="extract", python_callable=_extract)
     t_transform = PythonOperator(task_id="transform", python_callable=_transform)
     t_load = PythonOperator(task_id="load", python_callable=_load)
