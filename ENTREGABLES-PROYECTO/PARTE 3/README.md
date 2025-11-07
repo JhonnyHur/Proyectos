@@ -88,8 +88,32 @@ Esto iniciará:
 
 ---
 
+
+
 ## Verificación final
 
 Si todo está correcto, en la interfaz de Airflow deberías ver el DAG `main_etl` con las tareas en orden:
 
 `ping → extract → transform → great_expectations → load → analytics`
+
+
+---
+
+
+
+## Fuentes de Datos
+
+Fuente principal:
+
+data_icfes_2024.csv: base original del ICFES 2024 (10k+ registros).
+
+link fuente principal drive "data_icfes_2024.csv" (PARTE 3/data/input)
+
+https://drive.google.com/drive/folders/1pckl63mjvOB83bQ98Q1BSMhdVCSr_YZZ?usp=sharing
+
+
+link fuente principal final drive "data_icfes_2024_final.csv" (PARTE 3/data/output)
+
+https://drive.google.com/drive/folders/1pckl63mjvOB83bQ98Q1BSMhdVCSr_YZZ?usp=sharing
+
+
