@@ -1,0 +1,278 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+        }
+
+        .header {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .titulo-grafica p {
+            text-align: left;
+            color: white;
+            margin-bottom: 0rem;
+            padding: 0.2rem 0.5rem;
+            font-size: 1.2rem;
+            background-color: #3f3f3f;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .descripcion-grafica p {
+            text-align: left;
+            margin: 0;
+            padding: 0.5rem 0 0 0.5rem;
+            color: #333333;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .content-canvas {
+            height: 950px;
+            margin: 2rem 0rem;
+        }
+
+        .content_fuente {
+            margin: 0 0 1rem 0;
+        }
+
+        .content_fuente p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: #555555;
+            font-weight: 500;
+        }
+
+
+        /* mensaje que se activa cuando el usuario visualiza la gráfica desde celulares*/
+        .mensaje-responsive p {
+            display: none;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            margin: 0.2rem auto;
+        }
+
+        @media (max-width: 415px) {
+            .mensaje-responsive p {
+                display: block !important;
+            }
+        }
+
+        /* fin estilos para el mensaje */
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="mensaje-responsive">
+            <p>Para una mejor visualización de la gráfica, gire el
+                dispositivo de
+                forma horizontal</p>
+        </div>
+
+        <div>
+            <div class="titulo-grafica">
+                <p>Pobreza monetaria por departamentos</p>
+                <!--Ingrese el titulo principal-->
+            </div>
+            <div class="descripcion-grafica">
+                <p>Incidencia de pobreza monetaria (2024)</p>
+                <!--Ingrese el titulo secundario.-->
+            </div>
+        </div>
+
+        <div class="content-canvas">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="content_fuente">
+            <!-- <h3><b>Fuente:</b> DANE,</h3> -->
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            plugins: [ChartDataLabels],
+            data: {
+                labels: [
+                    'Chocó','La Guajira','Sucre','Magdalena','Córdoba','Bolívar','Cesar','Cauca','Huila','Nariño','Caquetá','Tolima','Norte de Santander','Atlántico','Boyacá','Santander','Quindío','Valle del Cauca','Antioquia','Risaralda','Meta','Cundinamarca','Caldas','Bogotá D.C.'
+
+                ],
+                datasets: [
+                    {
+                        label: '2023',
+                        data: [69.9,67.7,58.1,50.3,53.9,49.7,54.4,47.0,40.2,38.8,39.1,39.6,38.8,31.3,32.8,30.9,28.7,27.8,27.5,28.2,27.7,22.4,23.6,24.1],
+                        borderWidth: 1,
+                        backgroundColor: '#666666',
+                    },
+                    {
+                        label: '2024',
+                        data: [67.4,65.7,57.5,51.7,49.6,48.0,47.8,43.1,40.4,39.2,37.4,35.6,35.3,31.6,30.9,27.4,25.9,25.7,24.7,23.8,23.6,20.1,20.0,19.6],
+                        borderWidth: 1,
+                        backgroundColor: '#BF045B',
+                    },
+
+
+                ]
+            },
+            options: {
+                scales: {
+
+                    x: {
+                        max: 80,
+                        grid: {
+                            display: false
+                        }
+                        ,
+                        ticks: {
+                            color: "#333",
+                            font: {
+                                size: '14' // Cambia el tamaño de la fuente de los labels del eje x a 14 píxeles
+                            }
+                        },
+
+                        title: {
+                            display: true,
+                            text: 'Porcentaje (%)',
+                            color: '#333',
+                            font: {
+                                size: '14', // Cambia el tamaño de la fuente de los labels del eje x a 14 píxeles
+                                weight: '700'
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: "#333",
+                            font: {
+                                size: '14' // Cambia el tamaño de la fuente de los labels del eje x a 14 píxeles
+                            }
+                        },
+                        title: {
+                            display: true,
+                            color: "#333333", //color de la etiqueta en el eje y
+                            text: 'Departamento', //texto de la etiqueta
+                            font: {
+                                size: '14', // Cambia el tamaño de la fuente del label del eje y a 14 píxeles
+                                weight: '700'
+                            }
+                        },
+                    },
+
+
+                },
+                indexAxis: 'y',
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "top",//ubicaion de las convenciones del dataset en la parte de recha de la grafica
+                        align: "end",//ubica las convenciones del dataset en la parte alta de la grafica
+                        labels: {
+                            font: {
+                                size: 14, // Cambia el tamaño de la fuente de las leyendas a 14 píxeles
+                            },
+                            color: '#333', // Cambia el color de las leyendas a gris oscuro
+                        }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'end',
+
+                        borderColor: 'green',
+                        borderRadius: 5,
+                        borderWidth: 0,
+                        color: function (context) {
+                            return '#000'
+                        },
+                        formatter: function (value, context) {
+                            if (is_negative_number(value))
+                                return "-" + number_format(value, 1);
+                            else
+                                return number_format(value, 1);
+                        },
+
+
+
+
+                        font: {
+                            weight: 'bold',
+                            size: '14'
+                        },
+                    }
+                },
+
+                responsive: true,
+                maintainAspectRatio: false,
+
+
+            }
+        });
+
+        function number_format(amount, decimals) {
+
+            amount += ''; // por si pasan un numero en vez de un string
+            amount = parseFloat(amount.replace(/[^0-9\.]/g, '')); // elimino cualquier cosa que no sea numero o punto
+
+            decimals = decimals || 0; // por si la variable no fue fue pasada
+
+            // si no es un numero o es igual a cero retorno el mismo cero
+            if (isNaN(amount) || amount === 0)
+                return parseFloat(0).toFixed(decimals);
+
+            // si es mayor o menor que cero retorno el valor formateado como numero
+            amount = '' + amount.toFixed(decimals);
+
+            var amount_parts = amount.split('.'),
+                regexp = /(\d+)(\d{3})/;
+
+            while (regexp.test(amount_parts[0]))
+                amount_parts[0] = amount_parts[0].replace(regexp, '$1' + ',' + '$2');
+
+            return amount_parts.join(',');
+        }
+
+        function is_negative_number(number = 0) {
+
+            if ((is_numeric(number)) && (number < 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        function is_numeric(value) {
+            return !isNaN(parseFloat(value)) && isFinite(value);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

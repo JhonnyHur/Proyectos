@@ -1,0 +1,20 @@
+# Datos crudos y finales (se descargan, no se versionan)
+
+ENTREGABLES-PROYECTO/PARTE 2/data/curated/df_icfes_2024_final.csv
+ENTREGABLES-PROYECTO/PARTE 2/data/raw/data_icfes_2024.csv
+
+#entornos virtuales y archivos temporales
+WORKSHOPS/WORKSHOP-2/.venv/
+WORKSHOPS/WORKSHOP-2/my_python_env/
+**/.venv/
+**/my_python_env/
+
+
+
+# Archivos de Python generados
+__pycache__/
+*.pyc
+
+
+# Archivos de Jupyter Notebook generados
+.ipynb_checkpoints/
