@@ -1,12 +1,5 @@
 # PROYECTO-ETL-ANALISIS DATASET ICFES
 
-## Nombres
-
-- Bryan Burbano
-- Franco Ortiz
-- Didieth Baron
-- Jhonny Hurtado
-
 ## Links
 
 - **Página DATA ICFES:** [https://www.icfes.gov.co/investigaciones/data-icfes/](https://www.icfes.gov.co/investigaciones/data-icfes/)

@@ -114,11 +114,5 @@ Contraseña: etlpass
 Marca la opción: Salvar contraseña
 <br><br>
 
-### **Autores**
-
-
-Bryan Carvajal
-
-Jhonny Hurtado
 
 Equipo ETL Group 1 – Universidad Autónoma de Occidente (UAO)

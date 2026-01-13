@@ -98,12 +98,6 @@ Contraseña: etl25
 ¿Salvar contraseña?: Sí
 <br><br>
 
-### **Autores**
-
-
-Bryan Carvajal
-
-Jhonny Hurtado
 
 Equipo ETL Group 1 – Universidad Autónoma de Occidente (UAO)
 
